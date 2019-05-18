@@ -10,6 +10,7 @@ import java.time.Month;
 import java.time.chrono.ChronoLocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class UserMealsUtil {
@@ -28,6 +29,15 @@ public class UserMealsUtil {
     }
 
     public static List<UserMealWithExceed>  getFilteredWithExceeded(List<UserMeal> mealList, LocalTime startTime, LocalTime endTime, int caloriesPerDay) {
+        mealList.sort((o1, o2) -> {
+            if(o1.getDateTime().equals(o2.getDateTime()))
+                return  0;
+
+            if(o1.getDateTime().isAfter(o2.getDateTime())){
+                return 1;
+            }
+            else return -1;
+        });
         LocalDate d = LocalDate.of(1970,Month.JANUARY,1);
         int currentDayCallories=0;
         UserMeal mealToAdd=null;
