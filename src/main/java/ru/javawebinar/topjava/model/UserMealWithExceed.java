@@ -11,4 +11,8 @@ public class UserMealWithExceed extends  UserMeal {
         super(dateTime,description,calories);
         this.exceed = exceed;
     }
+
+    public boolean isExceed() {
+        return exceed;
+    }
 }
