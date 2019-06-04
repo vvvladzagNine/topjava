@@ -19,7 +19,7 @@ public class UserMealsUtil {
                 new UserMeal(LocalDateTime.of(2015, Month.MAY, 30, 20, 0), "Ужин", 500),
                 new UserMeal(LocalDateTime.of(2015, Month.MAY, 31, 10, 0), "Завтрак", 1000),
                 new UserMeal(LocalDateTime.of(2015, Month.MAY, 31, 13, 0), "Обед", 500),
-                new UserMeal(LocalDateTime.of(2015, Month.MAY, 31, 20, 0), "Ужин", 490),
+                new UserMeal(LocalDateTime.of(2015, Month.MAY, 31, 20, 0), "Ужин", 510),
                 new UserMeal(LocalDateTime.of(2014, Month.JUNE, 1, 8, 0), "Завтрак2", 600),
                 new UserMeal(LocalDateTime.of(2014, Month.JUNE, 1, 17, 0), "Завтрак2", 10)
         );
