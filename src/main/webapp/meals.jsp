@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: vladislavZag
@@ -12,5 +13,39 @@
 </head>
 <body>
 <h1>EEE</h1>
+<div>
+    <table border="1">
+        <tr bgcolor="#adacae">
+            <th>
+                Описание
+            </th>
+            <th>
+                Калории
+            </th>
+            <th>
+                Дата
+            </th>
+            <th>
+                Время
+            </th>
+        </tr>
+        <c:forEach var="meal" items="${meals}">
+            <tr <c:if test="${meal.isExcess()}">bgcolor="#c97a7a"</c:if>>
+                <th>
+                        ${meal.getDescription()}
+                </th>
+                <th>
+                        ${meal.getCalories()}
+                </th>
+                <th>
+                        ${meal.getDateTime().toLocalDate()}
+                </th>
+                <th>
+                        ${meal.getDateTime().toLocalTime()}
+                </th>
+            </tr>
+        </c:forEach>
+    </table>
+</div>
 </body>
 </html>
