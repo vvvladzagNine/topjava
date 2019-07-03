@@ -1,6 +1,7 @@
 package ru.javawebinar.topjava.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 import ru.javawebinar.topjava.model.Meal;
@@ -20,7 +21,7 @@ public class MealService {
     private final MealRepository repository;
 
     @Autowired
-    public MealService(MealRepository repository) {
+    public MealService(@Qualifier("jdbcMealRepository") MealRepository repository) {
         this.repository = repository;
     }
 
@@ -41,7 +42,13 @@ public class MealService {
     }
 
     public List<Meal> getAll(int userId) {
-        return repository.getAll(userId);
+        List<Meal> sortedList = repository.getAll(userId);
+        sortedList.sort((a,b)->{
+            if(a.getDateTime().equals(b.getDateTime()))return 0;
+            else if(a.getDateTime().isBefore(b.getDateTime()))return 1;
+            else return -1;
+        });
+        return sortedList;
     }
 
     public void update(Meal meal, int userId) {
