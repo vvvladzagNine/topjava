@@ -94,8 +94,8 @@ public class MealServiceTest {
 
     @Test
     public void get() throws Exception {
-        Meal actual = service.get(MEAL1_ID, USER_ID);
-        assertMatch(actual, MEAL1);
+        Meal actual = service.get(ADMIN_MEAL_ID, ADMIN_ID);
+        assertMatch(actual, ADMIN_MEAL1);
     }
 
     @Test

@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @Repository
 public class DataJpaMealRepository implements MealRepository {
-    private static final Sort SORT_DATETIME = new Sort(Sort.Direction.DESC, "dateTime");
+    //private static final Sort SORT_DATETIME = new Sort(Sort.Direction.DESC, "dateTime");
 
 
     @Autowired
@@ -26,6 +26,7 @@ public class DataJpaMealRepository implements MealRepository {
     @Override
     public Meal save(Meal meal, int userId) {
 
+        /*
         Optional<User> u = userRepository.findById(userId);
         if(meal.isNew()) {
             meal.setUser(u.get());
@@ -39,6 +40,15 @@ public class DataJpaMealRepository implements MealRepository {
             }
             return null;
         }
+         */
+        if (!meal.isNew() && get(meal.getId(), userId) == null) {
+            return null;
+        }
+        else{
+            meal.setUser(userRepository.getOne(userId));
+            crudRepository.save(meal);
+            return meal;
+        }
     }
 
     @Override
@@ -48,13 +58,13 @@ public class DataJpaMealRepository implements MealRepository {
 
     @Override
     public Meal get(int id, int userId) {
-        User u = userRepository.findById(userId).get();
-        return crudRepository.findByIdAndUser(id,u);
+       // User u = userRepository.findById(userId).get();
+        return crudRepository.getByIdAndUserId(userId,id);
     }
 
     @Override
     public List<Meal> getAll(int userId) {
-        return crudRepository.findAll(SORT_DATETIME);
+        return crudRepository.findAllByUserId(userId);
     }
 
     @Override

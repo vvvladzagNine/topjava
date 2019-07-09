@@ -26,4 +26,7 @@ public class Profiles {
             }
         }
     }
+    public static String getActiveRepoProfile() {
+        return REPOSITORY_IMPLEMENTATION;
+    }
 }
