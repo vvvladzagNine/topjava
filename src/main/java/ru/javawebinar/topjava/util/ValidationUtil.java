@@ -31,6 +31,7 @@ public class ValidationUtil {
         if (!found) {
             throw new NotFoundException("Not found entity with " + msg);
         }
+
     }
 
     public static void checkNew(HasId bean) {
