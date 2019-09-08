@@ -24,6 +24,7 @@ import ru.javawebinar.topjava.util.exception.NotFoundException;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 
 import static ru.javawebinar.topjava.util.exception.ErrorType.*;
